@@ -32,7 +32,7 @@ from requests_html import HTMLSession
 
 # 存储所有节点的速度测试结果
 SPEED_TEST = True
-SPEED_TEST_LIMIT = 20 # 只测试前20个节点的下行速度，每个节点测试5秒
+SPEED_TEST_LIMIT = 40 # 只测试前20个节点的下行速度，每个节点测试5秒
 results_speed = []
 # TEST_URL = "http://www.gstatic.com/generate_204"
 TEST_URL = "http://www.pinterest.com"
@@ -40,7 +40,7 @@ CLASH_API_PORTS = [9090]
 CLASH_API_HOST = "127.0.0.1"
 CLASH_API_SECRET = ""
 TIMEOUT = 1
-MAX_CONCURRENT_TESTS = 100
+MAX_CONCURRENT_TESTS = 200
 LIMIT = 10000 # 最多保留LIMIT个节点
 CONFIG_FILE = 'clash_config.yaml'
 INPUT = "input" # 从文件中加载代理节点，支持yaml/yml、txt(每条代理链接占一行)
@@ -61,10 +61,10 @@ clash_config_template = {
     "log-level": "info",
     "external-controller": "127.0.0.1:9090",
     "geodata-mode": True,
-    'geox-url': {'geoip': 'https://gitdl.cn/https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat', 'mmdb': 'https://gitdl.cn/https://raw.githubusercontent.com/Loyalsoldier/geoip/release/GeoLite2-Country.mmdb'},
+    'geox-url': {'geoip': 'https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat', 'mmdb': 'https://mirror.ghproxy.com/https://raw.githubusercontent.com/Loyalsoldier/geoip/release/GeoLite2-Country.mmdb'},
     "dns": {
         "enable": True,
-        "ipv6": False,
+        "ipv6": True,
         "default-nameserver": [
             "223.5.5.5",
             "119.29.29.29"
@@ -127,6 +127,36 @@ clash_config_template = {
         },
     ],
     "rules": [
+        "DOMAIN,hp.com,DIRECT",
+        "DOMAIN,ws-hp.com,DIRECT",
+        "DOMAIN,zicp.fun,DIRECT",
+        "DOMAIN,meibu.com,DIRECT",
+        "DOMAIN,dynv6.com,DIRECT",
+        "DOMAIN,msns.cn,DIRECT",
+        "DOMAIN,dns.army,DIRECT",
+        "DOMAIN,oray.com,DIRECT",        
+        "DOMAIN,zerotier.com,DIRECT",
+        "DOMAIN,xinsite.top,DIRECT",
+        "DOMAIN,checkipv6.dyndns.org,DIRECT",
+        "DOMAIN,checkip.dyndns.org,DIRECT",        
+        "DOMAIN,checkip.synology.com,DIRECT",
+        "DOMAIN,api.myip.com,DIRECT",
+        "DOMAIN,ifconfig.co,DIRECT",
+        "DOMAIN,ip6.seeip.org,DIRECT",        
+        "DOMAIN-SUFFIX,api-drive.mypikpak.com,节点选择",
+        "DOMAIN-SUFFIX,config.mypikpak.com,节点选择",
+        "DOMAIN-SUFFIX,access.pikpakdrive.com,节点选择",
+        "DOMAIN-SUFFIX,access.mypikpak.net,节点选择",
+        "DOMAIN-SUFFIX,access.mypikpak.com,节点选择",
+        "DOMAIN-SUFFIX,user.mypikpak.com,节点选择",
+        "DOMAIN-SUFFIX,mypikpak.net,节点选择",
+        "DOMAIN-SUFFIX,mypikpak.com,节点选择",
+        "DOMAIN-SUFFIX,4gtv.tv,节点选择",
+        "DOMAIN-SUFFIX,docker.com,节点选择",
+        "DOMAIN-SUFFIX,kobobooks.com,节点选择",
+        "DOMAIN-SUFFIX,kodingen.com,节点选择",
+        "DOMAIN-SUFFIX,lemonde.fr,节点选择",
+        "DOMAIN-SUFFIX,lepoint.fr,节点选择",
         "DOMAIN,app.adjust.com,DIRECT",
         "DOMAIN,bdtj.tagtic.cn,DIRECT",
         "DOMAIN,log.mmstat.com,DIRECT",
